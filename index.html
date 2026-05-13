@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Downloader - Fast & Smart Media Downloader</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #030712;
+            --panel: #111827;
+            --accent: #22d3ee;
+            --accent-glow: rgba(34, 211, 238, 0.3);
+            --text: #f9fafb;
+            --muted: #9ca3af;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            position: relative;
+            padding: 100px 20px;
+            text-align: center;
+            background: radial-gradient(circle at top center, #1e1b4b 0%, var(--bg) 70%);
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--accent-glow);
+            color: var(--accent);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border: 1px solid var(--accent);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(to bottom, #fff 50%, #9ca3af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            font-size: 1.2rem;
+            color: var(--muted);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--accent);
+            color: #083344;
+            padding: 18px 40px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .btn-download:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 0 40px var(--accent-glow);
+        }
+
+        .app-mockup {
+            margin-top: 60px;
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .app-mockup img {
+            width: 100%;
+            max-width: 900px;
+            border-radius: 20px;
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .platforms {
+            padding: 60px 0;
+            background: #09090b;
+            border-top: 1px solid #1f2937;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        .platform-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            opacity: 0.6;
+        }
+
+        .platform-grid i {
+            font-size: 2.5rem;
+            transition: 0.3s;
+        }
+
+        .platform-grid i:hover {
+            opacity: 1;
+            color: var(--accent);
+            transform: scale(1.2);
+        }
+
+        .features {
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: var(--panel);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #1f2937;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-10px);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+        }
+
+        footer {
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid #1f2937;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .btn-download {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="hero">
+        <div class="container">
+            <div class="badge">DMSP Ultimate Downloader</div>
+            <h1>Download Your Favorite Videos <br> In One Click</h1>
+            <p class="subtitle">A powerful desktop app to download videos, audio, and thumbnails from YouTube, TikTok,
+                Instagram, Facebook, and Twitter in highest quality.</p>
+
+            <a href="SocialDownloader.exe" class="btn-download">
+                <i class="fab fa-windows"></i>
+                Download for Windows
+            </a>
+
+            <div class="app-mockup">
+                <img src="hero.png" alt="App Preview">
+            </div>
+        </div>
+    </section>
+
+    <section class="platforms">
+        <div class="container">
+            <div class="platform-grid">
+                <i class="fab fa-youtube" title="YouTube"></i>
+                <i class="fab fa-tiktok" title="TikTok"></i>
+                <i class="fab fa-instagram" title="Instagram"></i>
+                <i class="fab fa-facebook" title="Facebook"></i>
+                <i class="fab fa-twitter" title="Twitter / X"></i>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>Why Choose Social Downloader?</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Lightning Fast</h3>
+                    <p>Uses advanced technologies to ensure maximum download speed for your links.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Up to 4K Quality</h3>
+                    <p>Supports video downloads in highest available quality (1080p, 2K, 4K) with 192kbps audio
+                        extraction.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Safe & Simple</h3>
+                    <p>No login required, no tracking, and works completely independently on your device.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Social Downloader Suite. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
